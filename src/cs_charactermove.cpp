@@ -64,14 +64,14 @@ public:
 		std::string playerName = player_name;
 		normalizePlayerName(playerName);
 		Player* player = ObjectAccessor::FindPlayerByName(playerName.c_str()); // get player by name
-		if (!player)
+		if (!player){
 			handler->SendSysMessage(LANG_PLAYER_NOT_FOUND);
             handler->SetSentErrorMessage(true);
             return false;
-		else{
+		}else{
 			
 			// Kick if player is online
-			WorldSession* s = p->GetSession();
+			WorldSession* s = player->GetSession();
 			s->KickPlayer();                            // mark session to remove at next session list update
 			s->LogoutPlayer(false);                     // logout player without waiting next session list update
 			
