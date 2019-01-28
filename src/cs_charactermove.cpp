@@ -45,7 +45,7 @@ public:
 			handler->PSendSysMessage("Usage : .charactermove Player_Name New_Account_Username");
             return true;
 		}
-		std::string accountName = player_name;
+		std::string accountName = account_name;
         if (!AccountMgr::normalizeString(accountName))
         {
             handler->PSendSysMessage(LANG_ACCOUNT_NOT_EXIST, accountName.c_str());
