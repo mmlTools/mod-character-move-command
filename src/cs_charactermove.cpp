@@ -72,8 +72,10 @@ public:
 			
 			// Kick if player is online
 			WorldSession* s = player->GetSession();
-			s->KickPlayer();                            // mark session to remove at next session list update
-			s->LogoutPlayer(false);                     // logout player without waiting next session list update
+			if(s)
+			{
+				s->KickPlayer(); 
+			}
 			
 			CharacterDatabase.PQuery("UPDATE characters SET account = '%u' WHERE guid = '%u'", targetAccountId, player->GetGUID());
 			handler->PSendSysMessage("Character has been moved to new account.");
