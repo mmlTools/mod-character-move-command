@@ -5,7 +5,7 @@ This is a module for [AzerothCore](http://www.azerothcore.org) that low move a c
 
 ## How to install
 
-###1) Simply place the module under the `modules` folder of your AzerothCore source folder.
+1) Simply place the module under the `modules` folder of your AzerothCore source folder.
 
 You can do clone it via git under the azerothcore/modules directory:
 
@@ -17,7 +17,7 @@ or you can manually [download the module](https://github.com/masterking32/mod-ch
 
 assign the script to an item such as hearthstone using the script name 'mod-character-move-command'
 
-###2) Re-run cmake and launch a clean build of AzerothCore
+2) Re-run cmake and launch a clean build of AzerothCore
 
 **That's it.**
 
