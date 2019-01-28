@@ -2,4 +2,6 @@ CU_SET_PATH("CMAKE_MOD_CHARCTERMOVE_DIR" "${CMAKE_CURRENT_LIST_DIR}")
 
 AC_ADD_SCRIPT("${CMAKE_CURRENT_LIST_DIR}/src/cs_charactermove.cpp")
 
-AC_ADD_SCRIPT_LOADER("PassiveAnticheat" "${CMAKE_CURRENT_LIST_DIR}/src/loader.h")
+AC_ADD_SCRIPT_LOADER("mod_character_move_command" "${CMAKE_CURRENT_LIST_DIR}/src/loader.h")
+
+message("-- MOD CHARACTER MOVE COMMAND CONFIGURED --")
