@@ -84,7 +84,7 @@ public:
 				}
 			}
 			
-			CharacterDatabase.PQuery("UPDATE characters SET account = '%u' WHERE guid = '%u'", targetAccountId, player->GetGUID());
+			CharacterDatabase.PQuery("UPDATE characters SET account = '%u' WHERE guid = '%u'", targetAccountId, characterGuid);
 			handler->PSendSysMessage("Character has been moved to new account.");
 		}
         return true;
