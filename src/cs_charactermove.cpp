@@ -39,6 +39,7 @@ public:
     {
 		char* player_name = strtok((char*)args, " ");
         char* account_name = strtok(nullptr, " ");
+		uint32 characterGuid;
 		
         if (!player_name || !account_name)
 		{
@@ -62,19 +63,25 @@ public:
         }
 		
 		std::string playerName = player_name;
-		normalizePlayerName(playerName);
-		Player* player = ObjectAccessor::FindPlayerByName(playerName.c_str()); // get player by name
-		if (!player){
+		if (!normalizePlayerName(playerName))
+            return false;
+		
+		characterGuid = sObjectMgr->GetPlayerGUIDByName(playerName);
+		if (!characterGuid){
 			handler->SendSysMessage(LANG_PLAYER_NOT_FOUND);
             handler->SetSentErrorMessage(true);
             return false;
 		}else{
 			
-			// Kick if player is online
-			WorldSession* s = player->GetSession();
-			if(s)
-			{
-				s->KickPlayer(); 
+			Player* player = ObjectAccessor::FindPlayerByName(playerName); // get player by name
+			if (player){
+				characterGuid = player->GetGUID();
+				// Kick if player is online
+				WorldSession* s = player->GetSession();
+				if(s)
+				{
+					s->KickPlayer(); 
+				}
 			}
 			
 			CharacterDatabase.PQuery("UPDATE characters SET account = '%u' WHERE guid = '%u'", targetAccountId, player->GetGUID());
